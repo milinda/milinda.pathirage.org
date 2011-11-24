@@ -1,0 +1,18 @@
+---
+layout: layout
+title: Milinda Pathirage - Computer Science PhD Student at Indiana University, Bloomington.
+---
+<div id="content" style="width:400px;">
+	<h1>Hello.</h1>
+ 	<p>My name's <a href="/about.html">Milinda Pathirage</a>. I'm a Computer Science PhD Student at <a href="http://www.iub.edu/">Indiana University, Bloomington</a>.</p>
+ 	<p>Before coming to IU, I worked at <a href="http://wso2.com">WSO2 Lanka (Pvt) Ltd.</a> from May 2008 to August 2011 and I was the product manager for <a href="http://wso2.com/products/business-process-server/">WSO2 Business Process Sever</a>.</p>
+ 	<p>You can reach me via <a href="mailto:milinda.pathirage@gmail.com">email</a>, or follow me on <a href="http://twitter.com/milindalakmal">Twitter</a>, <a href="http://www.facebook.com/milindapathirage">Facebook</a> or <a href="http://lk.linkedin.com/in/milindapathirage">LinkedIn</a>.</p>
+ 	<h2>Blog Posts</h2>
+ 	<ul>
+ 	  {% for post in site.posts %}
+ 	  <li>
+ 	<a href="{{ post.url }}/">{{ post.title }}</a> on <span>{{ post.date | date: "%B %e, %Y" }}</span> 
+ 	  </li>
+ 	  {% endfor %}
+ 	</ul>
+ </div>
