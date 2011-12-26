@@ -1,18 +1,45 @@
 ---
 layout: layout
-title: Milinda Pathirage - Computer Science PhD Student at Indiana University, Bloomington.
+title: Hey, I'm Milinda
 ---
-<div id="content" style="width:400px;">
-	<h1>Hello.</h1>
- 	<p>My name's <a href="/about.html">Milinda Pathirage</a>. I'm a Computer Science PhD Student at <a href="http://www.iub.edu/">Indiana University, Bloomington</a>.</p>
- 	<p>Before coming to IU, I worked at <a href="http://wso2.com">WSO2 Lanka (Pvt) Ltd.</a> from May 2008 to August 2011 and I was the product manager for <a href="http://wso2.com/products/business-process-server/">WSO2 Business Process Sever</a>.</p>
- 	<p>You can reach me via <a href="mailto:milinda.pathirage@gmail.com">email</a>, or follow me on <a href="http://twitter.com/milindalakmal">Twitter</a>, <a href="http://www.facebook.com/milindapathirage">Facebook</a> or <a href="http://lk.linkedin.com/in/milindapathirage">LinkedIn</a>.</p>
- 	<h2>Blog Posts</h2>
- 	<ul>
- 	  {% for post in site.posts %}
- 	  <li>
- 	<a href="{{ post.url }}/">{{ post.title }}</a> on <span>{{ post.date | date: "%B %e, %Y" }}</span> 
- 	  </li>
- 	  {% endfor %}
- 	</ul>
- </div>
+<section id="header">
+    <h1>Hey, I'm Milinda</h1>
+</section>
+<section id="about">
+    <p>I am a Computer Science PhD student at <a href="http://www.soic.indiana.edu/">Indiana University</a>. I'm
+        working as a research assistant in <a href="http://pti.iu.edu/d2i">Data to Insight Center</a> under the
+        supervision of <a href="https://www.cs.indiana.edu/~plale/">Prof. Beth Plale</a>. I am
+        working on research related to moving scientific computations to cloud and currently working with Windows
+        Azure.</p>
+
+    <p>I worked at <a href="http://wso2.com">WSO2 Inc.</a> from May 2008 to August 2011 and lead the WSO2 Business
+        Process Server team. I was the
+        founding developer of WSO2 Business Process Server and also involved in developing WSO2 Stratos. I have
+        <a href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=6009380">published</a>[<a
+                href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf">pdf</a>] work I did
+        on designing and implementing multi-tenant business process engine at ICWS 2011. </p>
+
+    <p>Get in touch with me on <a href="http://twitter.com/milindalakmal">Twitter</a>, Facebook or plain
+        old-fashioned email.</p>
+
+</section>
+<section id="publications">
+    <h2>Publications</h2>
+    <ul>
+        <li><span>ICWS 2011</span> - <a href="#">A Multi-tenant Architecture for Business Process Executions</a>
+        </li>
+    </ul>
+</section>
+<section id="posts">
+    <h2>Blog Posts</h2>
+    <ul>
+        {% for post in site.posts %}
+        {% capture ym %}{{post.date | date:"%Y%B"}}{% endcapture %}
+        {% if yearmonth != ym %}
+            {% assign yearmonth = ym %}
+        <li><h3>{{ post.date | date: "%B %Y"}}</h3></li>
+        {% endif %}
+        <li><span>{{ post.date | date: "%d"}}</span> - <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
