@@ -6,21 +6,18 @@ title: Hey, I'm Milinda
     <h1>Hey, I'm Milinda</h1>
 </section>
 <section id="about">
-    <p>I am a Computer Science PhD student at <a href="http://www.soic.indiana.edu/">Indiana University</a>. I'm
-        working as a research assistant in <a href="http://pti.iu.edu/d2i">Data to Insight Center</a> under the
-        supervision of <a href="https://www.cs.indiana.edu/~plale/">Prof. Beth Plale</a>. I am
-        working on research related to moving scientific computations to cloud and currently working with Windows
-        Azure.</p>
+    <p>I am a Computer Science PhD student at <a href="http://www.soic.indiana.edu/">Indiana University</a> and working as a research assistant in <a href="http://pti.iu.edu/d2i">Data to Insight</a>
+        Center under the supervision of <a href="https://www.cs.indiana.edu/~plale/">Prof. Beth Plale</a>. Currently I’m working on a <a href="http://pti.iu.edu/d2i/sigiri">research related</a> to moving
+        scientific computations to <a href="https://www.windowsazure.com/en-us/">Windows Azure</a>.</p>
 
-    <p>I worked at <a href="http://wso2.com">WSO2 Inc.</a> from May 2008 to August 2011 and lead the WSO2 Business
-        Process Server team. I was the
-        founding developer of WSO2 Business Process Server and also involved in developing WSO2 Stratos. I have
-        <a href="http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=6009380">published</a>[<a
-                href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf">pdf</a>] work I did
-        on designing and implementing multi-tenant business process engine at ICWS 2011. </p>
+    <p>In May 2008, I joined <a href="http://wso2.com">WSO2 Inc.</a> and lead the <a href="http://wso2.com/products/business-process-server/">WSO2 Business Process Server</a> team till I move to Bloomington for my
+        graduate studies. I was the founding developer of WSO2 Business Process Server and also involved in WSO2 Carbon and WSO2 Stratos
+        projects.</p>
 
-    <p>Get in touch with me on <a href="http://twitter.com/milindalakmal">Twitter</a>, Facebook or plain
-        old-fashioned email.</p>
+    <p>I am a committer for <a href="http://axis.apache.org">Apache Axis</a> and <a href="http://ode.apache.org">Apache ODE</a> projects.</p>
+
+    <p>Get in touch with me on <a href="http://twitter.com/milindalakmal">Twitter</a>, <a href="http://www.facebook.com/milindapathirage">Facebook</a> or plain
+        old-fashioned <a href="mailto:milinda.pathirage@gmail.com">email</a>.</p>
 
 </section>
 <section id="publications">
@@ -36,7 +33,7 @@ title: Hey, I'm Milinda
         {% for post in site.posts %}
         {% capture ym %}{{post.date | date:"%Y%B"}}{% endcapture %}
         {% if yearmonth != ym %}
-            {% assign yearmonth = ym %}
+        {% assign yearmonth = ym %}
         <li><h3>{{ post.date | date: "%B %Y"}}</h3></li>
         {% endif %}
         <li><span>{{ post.date | date: "%d"}}</span> - <a href="{{ post.url }}">{{ post.title }}</a></li>

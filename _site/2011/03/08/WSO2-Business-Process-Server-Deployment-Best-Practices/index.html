@@ -73,7 +73,7 @@
                 list-style: circle;
             }
 
-            .container h2{
+            .container h1{
                 margin-top: 60px;
                 margin-bottom: 30px;
                 font-size: 30px;
@@ -81,7 +81,7 @@
             }
         </style>
     
-    <h2>WSO2 Business Process Server Deployment Best Practices</h2>
+    <h1>WSO2 Business Process Server Deployment Best Practices</h1>
 <p>Default distribution of <a href="http://wso2.com/products/business-process-server">WSO2 BPS</a> comes with embedded H2 database as <a href="http://docs.oasis-open.org/wsbpel/2.0/CS01/wsbpel-v2.0-CS01.html">BPEL</a> engine’s persistence storage and other settings which are suitable for use in a development setup. But when you are going to production with WSO2 BPS, there are several configurations you need to change according to your production requirements. These configurations will change based on how much requests WSO2 BPS is going to handle per second, your auditing and monitoring requirements, performance requirements and nature of your process. Following are the main things you should do before go into production with WSO2 BPS.</p>
 
 <p>Some of the below mention configurations are true for Apache ODE, but the way we configure Apache ODE is little bit different from WSO2 BPS. In addition to that below mention configuration are valid from WSO2 BPS 2.0.2 onwards. Configuration mechanisms of older WSO2 BPS versions are different.</p>
