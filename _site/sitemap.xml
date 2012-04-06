@@ -9,8 +9,17 @@
       <lastmod>2011-12-28</lastmod>
   </url>
   <url>
+      <loc>/gsoc.html</loc>
+      <lastmod>2012-04-06</lastmod>
+  </url>
+  <url>
       <loc>/</loc>
-      <lastmod>2011-12-28</lastmod>
+      <lastmod>2012-03-30</lastmod>
+  </url>
+  <url>
+      <loc>/2012/03/13/recursively_scraping_blog_with_scrapy</loc>
+      <lastmod>2012-03-13</lastmod>
+      <changefreq>never</changefreq>
   </url>
   <url>
       <loc>/2011/09/11/Scheme-On-Mac-OS-X-With-Chez-Scheme-And-MacVim</loc>
