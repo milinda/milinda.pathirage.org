@@ -12,14 +12,16 @@
     <![endif]-->
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="/css/pyg.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-
+    <link href='http://fonts.googleapis.com/css?family=Carme' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
     <title>{{ page.title }}</title>
     <style>
         html, body {
             background-color: white;
-            font-family: "Helvetica Neue", 'Open Sans', Helvetica, Arial, sans-serif;
+            font-family: "Helvetica Neue", 'Carme', Helvetica, Arial, sans-serif;
         }
 
         .container {
@@ -41,7 +43,7 @@
             line-height: 24px;
             font-weight: 300;
             margin-bottom: 21px;
-            font-family: "Helvetica Neue", 'Open Sans', Helvetica, Arial, sans-serif;
+            font-family: "Helvetica Neue", 'Carme', 'Open Sans', Helvetica, Arial, sans-serif;
         }
 
         .container li {
@@ -152,6 +154,11 @@
             padding-top:7px;
         }
 
+        h4{
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -160,12 +167,12 @@
         <div class="avbar-inner">
 
          <div class="container">
-             <!--a class="brand" href="#">Sigiri</a-->
-             <img class="brand" src="/images/logo-2.png"/>
              <div class="nav-collapse">
             <ul class="nav">
-                <li class="{% if page.home %} active {% endif %}"><a href="http://milinda.pathirage.org">Home</a></li>
-                <li class="{% if page.archive %} active {% endif %}"><a href="http://milinda.pathirage.org/archive.html">Archives</a></li>
+                <!--li><a href="http://milinda.pathirage.org" style="font-size:24px;color:orange;"><i class="icon-fire"></i></a></li-->
+                <li class="{% if page.home %} active {% endif %}"><a href="http://milinda.pathirage.org">HOME</a></li>
+                <li class="{% if page.archive %} active {% endif %}"><a href="http://milinda.pathirage.org/archive.html">ARCHIVES</a></li>
+                <li class="{% if page.gsoc %} active {% endif %}"><a href="http://milinda.pathirage.org/gsoc.html">GSOC 2012</a></li>
             </ul>
         </div>
          </div>
@@ -183,6 +190,10 @@
                 margin-bottom: 30px;
                 font-size: 30px;
                 line-height: 35px;
+            }
+
+            em{
+                color: #003366;
             }
         </style>
     {% endif %}
