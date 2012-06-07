@@ -44,3 +44,6 @@ resources will be really helpful to you.
 * [Building REST APIs for Clojure Web Applications](http://mmcgrana.github.com/2010/08/clojure-rest-api.html)
 * [A Brief Overview of the Clojure Web Stack](http://brehaut.net/blog/2011/ring_introduction)
 * [Noir](http://webnoir.org/)
+
+If you are thinking of developing web applications in Java, consider
+moving to Clojure. It's really fun than developing in Java ;-).
