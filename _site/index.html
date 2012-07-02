@@ -1,270 +1,133 @@
-<!DOCTYPE HTML>
-
+<!doctype html>
 <html>
-<head>
-    <meta name="description"
-          content="Milinda Pathirage; Computer Science Graduate Student at Indiana University, Bloomington. Interested in Workflow Technologies, Programming Languages and Distributed Computing."/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="author" content="Milinda Pathirage"/>
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/pyg.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Hey, I'm Milinda</title>
+    
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>    
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <style>
-        html, body {
-            background-color: white;
-            font-family: "Helvetica Neue", 'Open Sans', Helvetica, Arial, sans-serif;
-        }
+      body{
+        color: #353535;
+      }
+      .wrapper {
+        margin: 0 0;
+      }
 
-        .container {
-            width: 680px;
-        }
+      a .post{
+        margin-bottom: 5px;
+        font-size: 18px;
+      }
 
-        pre{
-            background-color: #073642;
-        }
-        pre code{
-            background-color: #073642;
-        }
+      time{
+        font-family: 'Abel', sans-serif;
+        font-size: 0.9em;
+        display: block;
+        color: #888;
+        margin-bottom: 18px;
+      }
 
-        .bash{
-            color: #0086D2;
-        }
-        .container p, .container li {
-            font-size: 15px;
-            line-height: 24px;
-            font-weight: 300;
-            margin-bottom: 21px;
-            font-family: "Helvetica Neue", 'Open Sans', Helvetica, Arial, sans-serif;
-        }
+      footer p{
+        margin-bottom: 3px;
+      }
 
-        .container li {
-            color: #404040;
-            margin-bottom: 3px;
-        }
+      footer{
+        bottom: 30px;
+      }
 
-        .container li span {
-            color: gray;
-        }
+      .nav p{
+        margin-right: 7px;
+        float: left;
+      }
+      .nav{
+        float: left;
+      }
 
-        .container ul {
-            list-style: none;
-            margin-left: 0px;
-        }
+      #cright{
+        margin-top: 10px;
+      }
 
-        .container ol{
-            margin-left: 0px;
-        }
+      .nav-ele{
+        padding: 1px 4px 2px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #505050;
+      }
 
-        .container h2 {
-            font-weight: 300;
-        }
+      .nav-ele a{
+        font-weight: bold;
+        color: white;
+      }
 
-        .container h3 {
-            font-weight: 300;
-            color: #808080;
-        }
+      .nav-ele a:hover{
+        color: #ccc;
+      }
 
-        .container h1 {
-            margin-top: 60px;
-            margin-bottom: 30px;
-            font-size: 45px;
-            font-weight: 300;
-        }
-
-        .topbar div > ul a, .nav a {
-            padding: 5px 10px 6px;
-        }
-
-        .topbar{
-            height: 33px;
-        }
-
-        .topbar li{
-            margin-bottom: 0;
-        }
-
-        .container .imgcontainer{
-            padding: 4px;
-            margin: 0;
-            border: 1px solid #DDD;
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            border-radius: 4px;
-            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-            -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-        }
-
-        .container .imgcontainer img{
-            display: block;
-        }
-
-        .topbar-inner, .topbar .fill {
-            background-image: -moz-linear-gradient(top, #0F97FF, #0086F3);
-            background-image: -ms-linear-gradient(top, #0F97FF, #0086F3);
-            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0F97FF), color-stop(100%, #0086F3));
-            background-image: -webkit-linear-gradient(top, #0F97FF, #0086F3);
-            background-image: -o-linear-gradient(top, #0F97FF, #0086F3);
-            background-image: linear-gradient(top, #0F97FF, #0086F3);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F97FF', endColorstr='#0086F3', GradientType=0);
-        }
-
-        .mavbar-inner {
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #2c2c2c;
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-}
-
-.avbar-inner{
-    background: url(/images/bak.png) repeat-x;
-}
-.navbar .brand{
-    padding: 0px;
-    margin-top: -5px;
-    margin-left:-29px;
-}
-        .topbar a {
-            color: #CCFFFF;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-        }
-        #header{
-            padding-top:7px;
-        }
-
+      .archives{
+        margin-top: 20px;
+        margin-bottom: 8px;
+        margin-left: -20px;
+      }
     </style>
-</head>
-<body>
-
-    <div class="navbar navbar-fixed-top" data-scrollspy="scrollspy">
-        <div class="avbar-inner">
-
-         <div class="container">
-             <!--a class="brand" href="#">Sigiri</a-->
-             <img class="brand" src="/images/logo-2.png"/>
-             <div class="nav-collapse">
-            <ul class="nav">
-                <li class=" active "><a href="http://milinda.pathirage.org">Home</a></li>
-                <li class=""><a href="http://milinda.pathirage.org/archive.html">Archives</a></li>
-            </ul>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Hey, I'm Milinda</h1>
+        <p>A Father and a Computer Science PhD Student at the <a href="http://www.soic.indiana.edu/">Indiana University</a>. I am also a committer and a PMC member for <a href="http://axis.apache.org/">Apache Axis</a> and <a href="http://ode.apache.org/">Apache ODE</a> projects.</p>
+        <p>Get in touch with me on <a href="http://twitter.com/milindalakmal">Twitter</a>, <a href="http://www.facebook.com/milindapathirage">Facebook</a> or plain old-fashioned <a href="mailto:milinda.pathirage@gmail.com">email</a>.</p>
+        <div class="nav">
+          <p class="nav-ele"><a href="/">Home</a></p>
+          <p class="nav-ele"><a href="/archive.html">Archives</a></p>
+          <p class="nav-ele"><a href="/gsoc.html">GSOC 2011</a></p>
         </div>
-         </div>
-        </div>
-     </div>
-<div class="container">
-    
-    <section id="header">
-    <h1>Hey, I'm Milinda</h1>
-</section>
-<section id="about">
-    <p>I am a Computer Science PhD student at <a href="http://www.soic.indiana.edu/">Indiana University</a> and working as a research assistant in <a href="http://pti.iu.edu/d2i">Data to Insight</a>
-        Center under the supervision of <a href="https://www.cs.indiana.edu/~plale/">Prof. Beth Plale</a>. Currently I’m working on a <a href="http://pti.iu.edu/d2i/sigiri">research related</a> to moving
-        scientific computations to <a href="https://www.windowsazure.com/en-us/">Windows Azure</a>.</p>
+      </header>
+      <section>
+          <h1>Recent Posts</h1>
+  
+  <a class="post" href="/2012/06/20/reading-berkeley-view-of-cloud-computing" style="font-size: 1.3em;">Reading - Berkeley View of Cloud Computing</a>
+  <time>June 20, 2012</time>
+  
+  <a class="post" href="/2012/06/06/getting_started_with_clojure_web_application_development" style="font-size: 1.3em;">Web Application Development in Clojure</a>
+  <time>June 06, 2012</time>
+  
+  <a class="post" href="/2012/03/13/recursively_scraping_blog_with_scrapy" style="font-size: 1.3em;">Recursively Scraping A Blog With Scrapy</a>
+  <time>March 13, 2012</time>
+  
+  <a class="post" href="/2011/09/11/Scheme-On-Mac-OS-X-With-Chez-Scheme-And-MacVim" style="font-size: 1.3em;">Scheme on Mac OS X With Chez Scheme And MacVim</a>
+  <time>September 11, 2011</time>
+  
+  <a class="post" href="/2011/09/10/Configure-JDK-Source-And-Documentation-In-IntelliJ-IDEA-On-Mac-OS-X" style="font-size: 1.3em;">Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X</a>
+  <time>September 10, 2011</time>
+  
+  <a class="post" href="/2011/09/03/Mutual-Recursion" style="font-size: 1.3em;">Mutual Recursion</a>
+  <time>September 03, 2011</time>
+  
+  <a class="post" href="/2011/08/30/Wrap-The-Natural-Recursion" style="font-size: 1.3em;">Wrap The Natural Recursion</a>
+  <time>August 30, 2011</time>
+  
+  <a class="post" href="/2011/08/28/Change-Is-The-Only-Constant" style="font-size: 1.3em;">Change Is The Only Constant</a>
+  <time>August 28, 2011</time>
+  
 
-    <p>In May 2008, I joined <a href="http://wso2.com">WSO2 Inc.</a> and lead the <a href="http://wso2.com/products/business-process-server/">WSO2 Business Process Server</a> team till I move to Bloomington for my
-        graduate studies. I was the founding developer of WSO2 Business Process Server and also involved in WSO2 Carbon and WSO2 Stratos
-        projects.</p>
+  <h1>Publications</h1>
+  <span><a class="post" style="font-size: 1.3em;" href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">
+    ICWS 2011 - A Multi-tenant Architecture for Business Process Executions
+</a>(<a href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf">PDF</a>)</span>
 
-    <p>I am a committer for <a href="http://axis.apache.org">Apache Axis</a> and <a href="http://ode.apache.org">Apache ODE</a> projects.</p>
-
-    <p>Get in touch with me on <a href="http://twitter.com/milindalakmal">Twitter</a>, <a href="http://www.facebook.com/milindapathirage">Facebook</a> or plain
-        old-fashioned <a href="mailto:milinda.pathirage@gmail.com">email</a>.</p>
-
-</section>
-<section id="publications">
-    <h2>Publications</h2>
-    <ul>
-        <li><span>ICWS 2011</span> - <a href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">A Multi-tenant Architecture for Business Process Executions</a>(<a href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf" target="_blank">PDF</a>)
-        </li>
-    </ul>
-</section>
-<section id="posts">
-    <h2>Blog Posts</h2>
-    <ul>
-        
-        
-        
-        
-        <li><h3>March 2012</h3></li>
-        
-        <li><span>13</span> - <a href="/2012/03/13/recursively_scraping_blog_with_scrapy/">Recursively Scraping A Blog With Scrapy</a></li>
-        
-        
-        
-        
-        <li><h3>September 2011</h3></li>
-        
-        <li><span>11</span> - <a href="/2011/09/11/Scheme-On-Mac-OS-X-With-Chez-Scheme-And-MacVim/">Scheme on Mac OS X With Chez Scheme And MacVim</a></li>
-        
-        
-        
-        <li><span>10</span> - <a href="/2011/09/10/Configure-JDK-Source-And-Documentation-In-IntelliJ-IDEA-On-Mac-OS-X/">Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X</a></li>
-        
-        
-        
-        <li><span>03</span> - <a href="/2011/09/03/Mutual-Recursion/">Mutual Recursion</a></li>
-        
-        
-        
-        
-        <li><h3>August 2011</h3></li>
-        
-        <li><span>30</span> - <a href="/2011/08/30/Wrap-The-Natural-Recursion/">Wrap The Natural Recursion</a></li>
-        
-        
-        
-        <li><span>28</span> - <a href="/2011/08/28/Change-Is-The-Only-Constant/">Change Is The Only Constant</a></li>
-        
-        
-        
-        
-        <li><h3>March 2011</h3></li>
-        
-        <li><span>08</span> - <a href="/2011/03/08/WSO2-Business-Process-Server-Deployment-Best-Practices/">WSO2 Business Process Server Deployment Best Practices</a></li>
-        
-    </ul>
-</section>
-
-    
-    <footer><p>Copyright © 2011 Milinda Pathirage<!--, Ads by <a
-        href="http://test.skimlinks.com">Skimlinks</a>-->.</p></footer>
-</div>
-
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-2420520-12']);
-    _gaq.push(['_trackPageview']);
-
-    (function () {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-    })();
-</script>
-<script type="text/javascript" src="http://s.skimresources.com/js/26748X855387.skimlinks.js"></script>
-</body>
+      </section>
+      <footer>
+            <p id="cright">Copyright © 2012 Milinda Pathirage</p>
+            <p><small>Based on Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
 </html>

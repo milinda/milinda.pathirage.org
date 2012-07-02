@@ -3,41 +3,13 @@ layout: layout
 title: Hey, I'm Milinda
 home: true
 ---
-<section id="header">
-    <h1>Hey, I'm Milinda</h1>
-</section>
-<section id="about">
-    <p>I am a Computer Science PhD student at <a href="http://www.soic.indiana.edu/">Indiana University</a> and working as a research assistant in <a href="http://pti.iu.edu/d2i">Data to Insight</a>
-        Center under the supervision of <a href="https://www.cs.indiana.edu/~plale/">Prof. Beth Plale</a>. Currently I’m working on a <a href="http://pti.iu.edu/d2i/sigiri">research related</a> to moving
-        scientific computations to cloud(<a href="https://www.windowsazure.com/en-us/">Widows Azure</a>). I am interested in Distributed Computing and Programming Language Implementation related research.</p>
+  <h1>Recent Posts</h1>
+  {% for post in site.posts limit:8 %}
+  <a class="post" href="{{ post.url }}" style="font-size: 1.3em;">{{ post.title }}</a>
+  <time>{{ post.date | date: "%B %d"}}, {{ post.date | date: "%Y" }}</time>
+  {% endfor %}
 
-    <p>In May 2008, I joined <a href="http://wso2.com">WSO2 Inc.</a> and lead the <a href="http://wso2.com/products/business-process-server/">WSO2 Business Process Server</a> team till I move to Bloomington for my
-        graduate studies. I was the founding developer of WSO2 Business Process Server and also involved in WSO2 Carbon and WSO2 Stratos
-        projects.</p>
-
-        <p>I am a committer for <a href="http://axis.apache.org">Apache Axis</a> and <a href="http://ode.apache.org">Apache ODE</a> projects. I'll be working with <a href="http://incubator.apache.org/airavata/">Apache Airavata</a> project during summer 2012.</p>
-
-    <p>Get in touch with me on <a href="http://twitter.com/milindalakmal">Twitter</a>, <a href="http://www.facebook.com/milindapathirage">Facebook</a> or plain
-        old-fashioned <a href="mailto:milinda.pathirage@gmail.com">email</a>.</p>
-
-</section>
-<section id="publications">
-    <h2>Publications</h2>
-    <ul>
-        <li><span>ICWS 2011</span> - <a href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">A Multi-tenant Architecture for Business Process Executions</a>(<a href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf" target="_blank">PDF</a>)
-        </li>
-    </ul>
-</section>
-<section id="posts">
-    <h2>Blog Posts</h2>
-    <ul>
-        {% for post in site.posts %}
-        {% capture ym %}{{post.date | date:"%Y%B"}}{% endcapture %}
-        {% if yearmonth != ym %}
-        {% assign yearmonth = ym %}
-        <li><h3>{{ post.date | date: "%B %Y"}}</h3></li>
-        {% endif %}
-        <li><span>{{ post.date | date: "%d"}}</span> - <a href="{{ post.url }}/">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
-</section>
+  <h1>Publications</h1>
+  <span><a class="post" style="font-size: 1.3em;" href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">
+    ICWS 2011 - A Multi-tenant Architecture for Business Process Executions
+</a>(<a href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf">PDF</a>)</span>

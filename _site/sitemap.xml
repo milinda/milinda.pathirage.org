@@ -2,19 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
       <loc>/404.html</loc>
-      <lastmod>2011-12-27</lastmod>
+      <lastmod>2012-06-12</lastmod>
   </url>
   <url>
       <loc>/archive.html</loc>
-      <lastmod>2011-12-28</lastmod>
+      <lastmod>2012-06-12</lastmod>
   </url>
   <url>
       <loc>/gsoc.html</loc>
-      <lastmod>2012-04-06</lastmod>
+      <lastmod>2012-06-12</lastmod>
   </url>
   <url>
       <loc>/</loc>
-      <lastmod>2012-03-30</lastmod>
+      <lastmod>2012-07-01</lastmod>
+  </url>
+  <url>
+      <loc>/reading.html</loc>
+      <lastmod>2012-06-18</lastmod>
+  </url>
+  <url>
+      <loc>/2012/06/20/reading-berkeley-view-of-cloud-computing</loc>
+      <lastmod>2012-06-20</lastmod>
+      <changefreq>never</changefreq>
+  </url>
+  <url>
+      <loc>/2012/06/06/getting_started_with_clojure_web_application_development</loc>
+      <lastmod>2012-06-06</lastmod>
+      <changefreq>never</changefreq>
   </url>
   <url>
       <loc>/2012/03/13/recursively_scraping_blog_with_scrapy</loc>
