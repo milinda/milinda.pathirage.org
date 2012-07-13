@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Change Is The Only Constant</title>
+    <title>Web Application Development in Clojure</title>
     
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
@@ -113,28 +113,54 @@
         </div>
       </header>
       <section>
-        <h1>Change Is The Only Constant</h1>
-<p>I am a guy who liked to change the design of my blog time to time. I use <a href="http://wordpress.org/">Wordpress</a> as the blogging platform for <a href="http://blog.mpathirage.com">blog.mpathirage.com</a> and I am using Wordpress from June 2008. But the main problem I had was the complexity of Wordpress platform. It's very hard to change the look and feel and site structure without going through the complexity of Wordpress themes and plugins.</p>
+        <h1>Web Application Development in Clojure</h1>
+<p>I did some coding in <a href="http://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a> and <a href="http://www.ruby-lang.org/en/">Ruby</a> last couple of months and felt that writing Java code is not fun anymore. But Java as a platform is really good for
+most of the tasks and I started to learn some <a href="http://clojure.org/">Clojure</a> because there is support for reusing Java libraries in Clojure and it's a really good mordern <a href="http://en.wikipedia.org/wiki/Lisp_(programming_language">Lisp</a> derivative.</p>
 
-<p>In addition to that I didn't use any of the advance features of Wordpress(my blog is pretty simple one with couple of posts per month) and given the performance overhead and complexity it was not worth maintaining it. If I remember correctly I got to know about <a href="https://github.com/mojombo/jekyll">Jekyll</a> about a year ago. But couldn't migrate my blog to <a href="https://github.com/mojombo/jekyll">Jekyll</a> due to time constraints.</p>
+<p>I'm new to Clojure and I found the series of <a href="http://writingcoding.blogspot.com/2008/06/clojure-series-table-of-contents.html">blog posts</a> by Eric Rochester is really helpful to understand basic stuff for a beginner like me. Please keep in mind that there are some incompatibilities in the code of above blog posts with the new Clojure versions.</p>
 
-<p>I moved to <a href="http://bloomington.in.gov/">Bloomington</a>, Indiana to do my PhD in computer science this August(2011) and I had plenty of time to play with <a href="https://github.com/mojombo/jekyll">Jekyll</a> during the orientation period. And I found out about the <a href="http://aws.amazon.com/s3/">Amazon S3</a> <a href="http://aws.amazon.com/about-aws/whats-new/2011/02/17/Amazon-S3-Website-Features/">static web site hosting feature</a> and decided to host the blog in Amazon S3.</p>
+<p>As a start I started to re-wrtie a partially done Java Web Service in
+Clojure as a REST service. So I googled for resources on Clojure web
+appliction development and found <a href="http://mmcgrana.github.com/2010/07/develop-deploy-clojure-web-applications.html">this tutorial</a>. That is really good tutorial for beginners and it covers most of the basic concepts of <a href="https://github.com/mmcgrana/ring">Ring</a>, <a href="https://github.com/weavejester/compojure">Compojure</a> and <a href="https://github.com/weavejester/hiccup">Hiccup</a>. But there were some small issues and most of the solitions can be found in the comments section. My code for above tutorial can be found <a href="https://github.com/milinda/ef/tree/master/clojure-web/adder">here</a>.</p>
 
-<p>So this new blog is the result of work I did around <a href="https://github.com/mojombo/jekyll">Jekyll</a> and Amazon S3. <a href="https://github.com/mojombo/jekyll">Jekyll</a>'s theming system and configurations are pretty easy and I could write my own theme using <a href="https://github.com/danielmcgraw/Jekyll-Base">Jekyll-Base</a> as the foundation within couple of hours. I'm using <a href="http://www.dropbox.com/">Dropbox</a> to keep a backup of the site's source and use <a href="https://forums.aws.amazon.com/thread.jspa?threadID=11975&amp;start=0&amp;tstart=0">s3sync</a> written in Ruby to sync the new site to S3 bucket.</p>
-
-<p>Here are some helpful links to get started with Jekyll and Amazon S3 website hosting.</p>
+<p>There are slight changes in my code when compared to code in the
+tutorial.</p>
 
 <ul>
-<li><a href="http://danielmcgraw.com/2011/04/14/The-Ultimate-Guide-To-Getting-Started-With-Jekyll-Part-1/">Ultimate guide to getting started with Jekyll</a></li>
-<li><a href="http://aws.typepad.com/aws/2011/02/host-your-static-website-on-amazon-s3.html">Host your static web site on Amazon S3</a></li>
-<li><a href="http://docs.amazonwebservices.com/AmazonS3/latest/dev/index.html?WebsiteHosting.html">Hosting Websites on Amazon S3</a></li>
-<li><a href="http://carltonbale.com/how-to-alias-a-domain-name-or-sub-domain-to-amazon-s3">How to alias domain name or sub domain name to Amazon S3</a></li>
+<li>I didn't create a separate <em>script/run.clj</em> file, but included main
+method in <em>adder/core.clj</em>.</li>
+<li>Had to modify <em>form action</em> and <em>link</em> in output view to make this
+work as a WAR in Tomcat.</li>
+<li>Used <a href="https://github.com/technomancy/leiningen">lein</a>-<a href="https://github.com/weavejester/lein-ring">ring</a> to create WAR file and had to exclude <em>javax.servlet</em> jar from the generated WAR file using <em>:war-exclusions</em> to resolve a class loading issue.</li>
+<li>I had to serve static files via Tomcat because ring middleware
+'wrap-file' couldn't load my resource directory when I bundled the app
+as a war. So I used <em>:war-resources-path</em> configuration to copy
+resources(static files) into root of my WAR.</li>
 </ul>
 
 
-<p>So in the coming years I'll use this site as the my primary blog and I am planning to migrate some of the popular posts from my old <a href="http://blog.mpathirage.com">blog</a> to this one. May be this blog will also change in the future. Who knows what will happen in the future. Change is the only constant.</p>
+<p>I learned several things by doing this excercise. One thing is support
+for WAR deployment is still in early stage. Mostly it's hard to find
+good resources online. And the other thing is some of the most popular
+tutorials available online are outdated. This is mainly due to rapid
+changes(development) in Clojure eco-system. Finally there are some stuff
+which works with Jetty adapter doesn't work when deploy the WAR in a
+custom context and I couldn't find any tutorial which talks about these
+things. I think <em>wrap-if</em> concept introduced in Clojure web app development <a href="(http://mmcgrana.github.com/2010/07/develop-deploy-clojure-web-applications.html">tutorial</a> I mentioned above will be really helpful to handle development and production configurations.</p>
 
-<blockquote><p>Everyone thinks of changing the world, but no one thinks of changing himself.</p></blockquote>
+<p>IMO, If you are new to web application development in Clojure following
+resources will be really helpful to you.</p>
+
+<ul>
+<li><a href="http://mmcgrana.github.com/2010/07/develop-deploy-clojure-web-applications.html">Developing and Deploying a Simple Clojure Web Application</a></li>
+<li><a href="http://mmcgrana.github.com/2010/08/clojure-rest-api.html">Building REST APIs for Clojure Web Applications</a></li>
+<li><a href="http://brehaut.net/blog/2011/ring_introduction">A Brief Overview of the Clojure Web Stack</a></li>
+<li><a href="http://webnoir.org/">Noir</a></li>
+</ul>
+
+
+<p>If you are thinking of developing web applications in Java, consider
+moving to Clojure. It's really fun than developing in Java ;-).</p>
 
 <div id="comments">
         <div id="disqus_thread"></div>

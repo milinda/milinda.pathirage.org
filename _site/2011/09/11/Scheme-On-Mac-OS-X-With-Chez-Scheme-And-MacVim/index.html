@@ -14,10 +14,13 @@
     <![endif]-->
     <style>
       body{
-        color: #353535;
+        color: #404040;
+        padding:0;
+        margin: 0;
       }
       .wrapper {
         margin: 0 0;
+        padding: 50px;
       }
 
       a .post{
@@ -75,9 +78,29 @@
         margin-bottom: 8px;
         margin-left: -20px;
       }
+
+      .topbar-fixed{
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+        margin-bottom: 0;
+        position: fixed;
+      }
+
+      .topbar-inner{
+        min-height: 20px;
+        width:100%;
+        background-color: #D44413;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+      }
     </style>
   </head>
   <body>
+    <!--div class="topbar-fixed">
+      <div class="topbar-inner" id="css-animation">
+      </div>
+    </div-->
     <div class="wrapper">
       <header>
         <h1>Hey, I'm Milinda</h1>
@@ -101,7 +124,25 @@
 
 <p>Make sure to download <strong>Petite Chez Scheme</strong> non-threaded Mac OS X <a href="http://www.scheme.com/download/pcsv8.3-a6osx-2.pkg.tar.gz">pkg file</a> suitable to your architecture. When compiling MacVim make sure to enable Python and Ruby support. You can do this by running configuration script as follows: <strong>./configure --enable-rubyinterp=yes --enable-pythoninterp=yes</strong>.</p>
 
+<div id="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'milindablog'; // required: replace example with your forum shortname
 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
 
       </section>
       <footer>

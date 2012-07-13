@@ -5,7 +5,7 @@ home: true
 ---
   <h1>Recent Posts</h1>
   {% for post in site.posts limit:8 %}
-  <a class="post" href="{{ post.url }}" style="font-size: 1.3em;">{{ post.title }}</a>
+  <a class="post" href="{{ post.url }}/" style="font-size: 1.3em;">{{ post.title }}</a>
   <time>{{ post.date | date: "%B %d"}}, {{ post.date | date: "%Y" }}</time>
   {% endfor %}
 

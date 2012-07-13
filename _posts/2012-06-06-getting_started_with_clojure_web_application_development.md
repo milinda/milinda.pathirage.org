@@ -6,7 +6,7 @@ date: 2012-06-06 18:54:11
 comments: true
 ---
 
-I did some coding in [Scheme](http://en.wikipedia.org/wiki/Scheme_(programming_language)) and [Ruby](http://www.ruby-lang.org/en/) last couple of months and felt that writing Java code is not fun anymore. But Java as a platform is really good for
+I did some coding in [Scheme](http://en.wikipedia.org/wiki/Scheme_\(programming_language\)) and [Ruby](http://www.ruby-lang.org/en/) last couple of months and felt that writing Java code is not fun anymore. But Java as a platform is really good for
 most of the tasks and I started to learn some [Clojure](http://clojure.org/) because there is support for reusing Java libraries in Clojure and it's a really good mordern [Lisp](http://en.wikipedia.org/wiki/Lisp_(programming_language) derivative.
 
 I'm new to Clojure and I found the series of [blog posts](http://writingcoding.blogspot.com/2008/06/clojure-series-table-of-contents.html) by Eric Rochester is really helpful to understand basic stuff for a beginner like me. Please keep in mind that there are some incompatibilities in the code of above blog posts with the new Clojure versions.
