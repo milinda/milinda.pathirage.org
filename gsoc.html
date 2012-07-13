@@ -8,7 +8,6 @@ title: GSOC 2012 Project Proposal
     }
 </style>
 <h1>Cloud Bursting Support for Airavata Computational Workflows</h1>
-<section id="introduction">
 <p>Apache Airavata provides capabilities to construct, execute and monitor computational workflows with built in
 support for executing compute intensive applications on grid computing resources. With the increasing interest
 on hybrid execution of compute intensive tasks on grids and clouds, solving the problem of selecting which computing
@@ -20,8 +19,6 @@ including human analyzing , text classification, data mining and machine learnin
 support cloud bursting for Hadoop based computational tasks. </p>
 
 <p> This project will develop algorithms and software components required for efficient selection of computing resources(to run Hadoop jobs) based on the distribution of data to be processed, the tolerable latency on shared batch queued grid clusters, and the nature and size of the problem to be solved.</p>
-</section>
-<section id="problem">
 <h2>Problems</h2>
 <p>To efficiently select the computing resource, we first need to define on which basis we are going to select. Following criterion will be considered and still there are lot research to be done on these criterion to fine tune them and identify new criterion to select the computing resources.</p>
 <ul>
@@ -30,16 +27,12 @@ support cloud bursting for Hadoop based computational tasks. </p>
     <li>Nature and size of the problem to be solved</li>
 </ul>
 <p>For large data analysis problems we may need move part of the problem to cloud or move simple computational jobs to local clusters from the cloud. Especially for applications which reduce the data as they proceed in the graph, they better fit for local MapReduce executions residing on Hadoop based file systems. Exploring the solution to this problem will be interesting and this will open up new research problems on cloud bursting MapReduce jobs partially.</p>
-</section>
-<section id="solution">
 <h2>Benifits To Airavata</h2>
 <p>Primary target of Airavata project is to build science gateways using computational resources from various disciplines. The initial targeted set of gateways include projects supporting research and education in chemistry, life sciences, biophysics, environmental sciences, geosciences astronomy and nuclear physics.</p>
 
 <p>Most of the problems in above mentioned scientific domains involve huge data processing tasks and Hadoop is becoming the de facto technology for implementing compute intensive data processing tasks. This project will allow Airavata workflows to efficiently schedule Hadoop based jobs on various computing resource by reducing the overheads involved in data movement, and waiting in queues to get picked up by batch job execution systems. This project will make resource selection transparent and will reduce the complexity of setting up infrastructure required to run the computational tasks. </p>
 
 <p>In addition to the direct benefits to Airavata project and the scientific community this project will open up new research directions on moving Hadoop jobs from and to cloud for efficient utilization of resources. </p>
-</section>
-<section id="deliverables">
 <h2>Implementation</h2>
 <p>Resource selection component will implemented as a module for Airavata Workflow Interpreter. The module will implement support for heuristics based resource selection, automated deployment of Hadoop on computational resources and automated migration of Hadoop jobs to/from clouds(grids) to/from local. As the project goes on I am planing to evaluate feasibility of different migration approaches and when to and where to migrate will change depends on the experience I get during initial phase of the project.</p>
 
@@ -52,8 +45,6 @@ support cloud bursting for Hadoop based computational tasks. </p>
 <p>In this phase I’ll focus on implementing support scaling out Hadoop jobs running on local clusters to cloud based on the saturation level of local resources. In addition to commercial cloud platforms, support for computational grids will also be added to this module. This scaling technique is often referred to as Cloud bursting and this project will not only enable cloud bursting for Hadoop based jobs, it’ll open up the path and give us the necessary experience to implement cloud bursting for other computational jobs supported by Airavata.</p>
 <h3>Phase 3</h3>
 <p>In this phase I’ll focus on exploring the ways to determine which computing resource to select for the task at hand. I’m planning to implement heuristics based algorithm to support efficient selection of computing resources. Also I’m planning to do the testing and evaluation of the cloud bursting module implemented in the previous phases in this last phase. Plan is to use real world use case from a scientific domain as the test workflow.</p>
-</section>
-<section id="time-line">
 <h2>Time Line</h2>
 <div>
     <ul>
@@ -63,8 +54,6 @@ support cloud bursting for Hadoop based computational tasks. </p>
         <li><strong>August 1 - August 20</strong> - Third phase of the project. Exploring heuristics based algorithms for efficient selection of computing resources, testing and evaluation of the modules developed using real world use case.</li>
     </ul>
 </div>
-</section>
-<section id="resources">
 <h2>Resources</h2>
 <ul>
     <li><a href="http://incubator.apache.org/airavata/">http://incubator.apache.org/airavata/</a></li>
@@ -73,7 +62,11 @@ support cloud bursting for Hadoop based computational tasks. </p>
     <li><a href="http://www.xyratex.com/pdfs/whitepapers/Xyratex_white_paper_MapReduce_1-4.pdf">http://www.xyratex.com/pdfs/whitepapers/Xyratex_white_paper_MapReduce_1-4.pdf<a></li>
             <li><a href="http://bowtie-bio.sourceforge.net/crossbow/index.shtml">http://bowtie-bio.sourceforge.net/crossbow/index.shtml</a></li>
 
+          </ul>
+
+<h2>Progress</h2>
+<ul>
+  <li><a href="http://milinda.pathirage.org/gsoc-mid-update.html">Midterm progress update</a></li>
 </ul>
-</section>
 
 
