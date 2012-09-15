@@ -18,11 +18,26 @@
   </url>
   <url>
       <loc>/</loc>
-      <lastmod>2012-07-01</lastmod>
+      <lastmod>2012-09-15</lastmod>
   </url>
   <url>
       <loc>/reading.html</loc>
       <lastmod>2012-06-18</lastmod>
+  </url>
+  <url>
+      <loc>/2012/08/27/Handling-File-Uploads-In-Clojure-Web-Apps</loc>
+      <lastmod>2012-08-27</lastmod>
+      <changefreq>never</changefreq>
+  </url>
+  <url>
+      <loc>/2012/07/20/Creating-Subversion-Mirror-For-Git-Repository</loc>
+      <lastmod>2012-07-20</lastmod>
+      <changefreq>never</changefreq>
+  </url>
+  <url>
+      <loc>/2012/07/13/Minus-First-Birthday</loc>
+      <lastmod>2012-07-13</lastmod>
+      <changefreq>never</changefreq>
   </url>
   <url>
       <loc>/2012/06/06/getting_started_with_clojure_web_application_development</loc>

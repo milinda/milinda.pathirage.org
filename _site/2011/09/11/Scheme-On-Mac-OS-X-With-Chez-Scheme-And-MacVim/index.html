@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Scheme on Mac OS X With Chez Scheme And MacVim</title>
-    
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>    
+    <link href='http://fonts.googleapis.com/css?family=Life+Savers' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -94,6 +94,28 @@
         background-color: #D44413;
         box-shadow: 0 1px 3px rgba(0, 0, 0, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
       }
+      
+      .quote-sidebar{
+      font-weight:bold;
+      }
+      .quote-sidebar .quote{
+      margin-bottom: 5px;
+      padding-top:40px;
+      font-family: 'Life Savers', cursive;
+      }
+      .quote-sidebar .author{
+      float:right;
+      margin-right: 40px;
+      }
+.pub-list{
+list-style: none;
+margin-left: 0;
+}
+
+.pu-list li{
+margin-top: 10px;
+}
+
     </style>
   </head>
   <body>
@@ -111,6 +133,11 @@
           <p class="nav-ele"><a href="/archive.html">Archives</a></p>
           <p class="nav-ele"><a href="/gsoc.html">GSOC 2011</a></p>
         </div>
+	
+	<div style="clear:both;" class="quote-sidebar">
+	  <p class="quote">Don't ignore your dreams; don't work too much; say what you think; cultivate friendships; be happy.</p>
+	  <p class="author">- <a href="http://paulgraham.com/todo.html" target="_blank">Paul Graham</a></p>
+	</div>
       </header>
       <section>
         <h1>Scheme on Mac OS X With Chez Scheme And MacVim</h1>
@@ -151,5 +178,18 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2420520-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
   </body>
 </html>

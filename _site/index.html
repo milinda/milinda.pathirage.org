@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Hey, I'm Milinda</title>
-    
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>    
+    <link href='http://fonts.googleapis.com/css?family=Life+Savers' rel='stylesheet' type='text/css'>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -94,6 +94,28 @@
         background-color: #D44413;
         box-shadow: 0 1px 3px rgba(0, 0, 0, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
       }
+      
+      .quote-sidebar{
+      font-weight:bold;
+      }
+      .quote-sidebar .quote{
+      margin-bottom: 5px;
+      padding-top:40px;
+      font-family: 'Life Savers', cursive;
+      }
+      .quote-sidebar .author{
+      float:right;
+      margin-right: 40px;
+      }
+.pub-list{
+list-style: none;
+margin-left: 0;
+}
+
+.pu-list li{
+margin-top: 10px;
+}
+
     </style>
   </head>
   <body>
@@ -111,9 +133,23 @@
           <p class="nav-ele"><a href="/archive.html">Archives</a></p>
           <p class="nav-ele"><a href="/gsoc.html">GSOC 2011</a></p>
         </div>
+	
+	<div style="clear:both;" class="quote-sidebar">
+	  <p class="quote">Don't ignore your dreams; don't work too much; say what you think; cultivate friendships; be happy.</p>
+	  <p class="author">- <a href="http://paulgraham.com/todo.html" target="_blank">Paul Graham</a></p>
+	</div>
       </header>
       <section>
           <h1>Recent Posts</h1>
+  
+  <a class="post" href="/2012/08/27/Handling-File-Uploads-In-Clojure-Web-Apps/" style="font-size: 1.3em;">Handling File Uploads in Clojure Web Apps</a>
+  <time>August 27, 2012</time>
+  
+  <a class="post" href="/2012/07/20/Creating-Subversion-Mirror-For-Git-Repository/" style="font-size: 1.3em;">Creating SVN Mirror For Git Repository</a>
+  <time>July 20, 2012</time>
+  
+  <a class="post" href="/2012/07/13/Minus-First-Birthday/" style="font-size: 1.3em;">Minu's First Birthday</a>
+  <time>July 13, 2012</time>
   
   <a class="post" href="/2012/06/06/getting_started_with_clojure_web_application_development/" style="font-size: 1.3em;">Web Application Development in Clojure</a>
   <time>June 06, 2012</time>
@@ -130,20 +166,20 @@
   <a class="post" href="/2011/09/03/Mutual-Recursion/" style="font-size: 1.3em;">Mutual Recursion</a>
   <time>September 03, 2011</time>
   
-  <a class="post" href="/2011/08/30/Wrap-The-Natural-Recursion/" style="font-size: 1.3em;">Wrap The Natural Recursion</a>
-  <time>August 30, 2011</time>
-  
-  <a class="post" href="/2011/08/28/Change-Is-The-Only-Constant/" style="font-size: 1.3em;">Change Is The Only Constant</a>
-  <time>August 28, 2011</time>
-  
-  <a class="post" href="/2011/03/08/WSO2-Business-Process-Server-Deployment-Best-Practices/" style="font-size: 1.3em;">WSO2 Business Process Server Deployment Best Practices</a>
-  <time>March 08, 2011</time>
-  
 
   <h1>Publications</h1>
-  <span><a class="post" style="font-size: 1.3em;" href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">
+  <span style="display:block;"><a class="post" style="font-size: 1.3em;" href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">
     ICWS 2011 - A Multi-tenant Architecture for Business Process Executions
 </a>(<a href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf">PDF</a>)</span>
+
+<span style="margin-top:10px;display:block;"><a class="post" style="font-size: 1.3em;" href="http://www.igi-global.com/article/scalable-multi-tenant-architecture-business/70388" target="_blank">
+    IJWSR Vol. 9 Issue 2 - A Scalable Multi-Tenant Architecture for Business Process Executions
+</a></span>
+
+<span style="margin-top:10px;display:block;"><a class="post" style="font-size: 1.3em;" href="http://dl.acm.org/citation.cfm?id=2287040" target="_blank">
+    ScienceCloud 2012 - Middleware alternatives for storm surge predictions in Windows Azure
+</a></span>
+
 
       </section>
       <footer>
@@ -152,5 +188,18 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2420520-12']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
   </body>
 </html>
