@@ -2,7 +2,8 @@
 layout: post
 title: Handling File Uploads in Clojure Web Apps
 author: Milinda Pathirage
-time: 27th August 2012
+time: 2012-08-27
+excerpt: I talked about Clojure web development in my previous post. This is a extension to it which describes adding file upload support to Clojure web apps.
 ---
 
 [Clojure web application development](http://milinda.pathirage.org/2012/06/06/getting_started_with_clojure_web_application_development/) is still in it's early stages and there aren't lot of web applications written in Clojure. Recently I had to write add file uploading support to web application I'm developing in Clojure(using [ring](https://github.com/mmcgrana/ring) and [compojure](https://github.com/weavejester/compojure)). I found following two articles by googling, but those lacks some of the basic internal details.

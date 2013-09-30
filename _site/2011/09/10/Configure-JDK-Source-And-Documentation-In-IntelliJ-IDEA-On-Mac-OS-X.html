@@ -9,7 +9,7 @@
     <meta name="author" content="Milinda Pathirage">
     <link rel="shortcut icon" href="/images/favicon.png">
 
-    <title>Technology and Life - Your New Jekyll Site</title>
+    <title>Technology and Life - Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X</title>
 
     <!-- Google Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet'
@@ -63,86 +63,41 @@
 </div>
 
 <div class="container">
-    <div class="row posts">
-	<div class="col-lg-6">
-			
-				
-				
-				<div class="article">
-					<p class="date">29 Sep 2013</p>
-					<h3><a href="/hadoop/yarn/2013/09/29/how-to-setup-multi-node-hadoop-20xyarn-cluster.html">How To Setup Multi Node Hadoop 2.0.x(YARN) Cluster</a></h3>
-					<p>There are lots of online articles on installing Hadoop. But not many on Hadoop YARN. But the articles I found didn't work for Hadoop 2.0.6. I had to read the Hadoop code and figure out the issues. This post descibres proper and easy way to install Hadoop 2.0.6-alpha(YARN) on a 2-node cluster.</p>
-				</div>
-				
-	    
-				
-				
-	    
-				
-				
-				<div class="article">
-					<p class="date">20 Jul 2012</p>
-					<h3><a href="/2012/07/20/Creating-Subversion-Mirror-For-Git-Repository.html">Creating SVN Mirror For Git Repository</a></h3>
-					<p>Most of the times we mirror our SVN repositories using Git. But I wanted to mirror Git repository into a SVN repository. This post describes the process of mirroring a Git repo to SVN.</p>
-				</div>
-				
-	    
-				
-				
-	    
-				
-				
-				<div class="article">
-					<p class="date">13 Mar 2012</p>
-					<h3><a href="/python/scrapy/2012/03/13/introduction-to-scrapy.html">Recursively Scraping A Blog With Scrapy</a></h3>
-					<p>This is a sample post explaining capabilities of Jekyll framework for beginners. You need to put all your posts under _posts directory.</p>
-				</div>
-				
-	    
-				
-				
-	    
+    <div class="post">
+	<div class="header">
+  	<h1>Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X</h1>
+  	<p>10 Sep 2011 by Milinda Pathirage</p>
 	</div>
-	<div class="col-lg-6">
-		
-			
-			
-    
-			
-			
-			<div class="article">
-				<p class="date">27 Aug 2012</p>
-				<h3><a href="/2012/08/27/Handling-File-Uploads-In-Clojure-Web-Apps.html">Handling File Uploads in Clojure Web Apps</a></h3>
-				<p>I talked about Clojure web development in my previous post. This is a extension to it which describes adding file upload support to Clojure web apps.</p>
-			</div>
-			
-    
-			
-			
-    
-			
-			
-			<div class="article">
-				<p class="date">06 Jun 2012</p>
-				<h3><a href="/2012/06/06/getting_started_with_clojure_web_application_development.html">Web Application Development in Clojure</a></h3>
-				<p>Getting started with Clojure web development, including popular Clojure web frameworks and tutorials.</p>
-			</div>
-			
-    
-			
-			
-    
-			
-			
-			<div class="article">
-				<p class="date">10 Sep 2011</p>
-				<h3><a href="/2011/09/10/Configure-JDK-Source-And-Documentation-In-IntelliJ-IDEA-On-Mac-OS-X.html">Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X</a></h3>
-				<p>This post describes steps necessary to download and configure JDK source files and documetation in IntelliJ IDEA on Mac OS X.</p>
-			</div>
-			
-    
+	<div class="content">
+		<p>When you install IntelliJ IDEA on Mac OS X, it doesn't automatically pick the JDK source and documentation as it do in Linux. As I got to know this is because default Java installation in Mac OS X doesn't have those. You need to first download "<em>Java for Mac OS X <version> Developer Package</em>" from <a href="http://connect.apple.com/">Apple Developer Downloads</a>. You have to follow below steps to configure JDK source and documentation in IntelliJ IDEA.</p>
+
+<ol>
+<li>Sign in to Apple’s <a href="http://connect.apple.com/">Developer Downloads</a> using you Apple Developer account.</li>
+<li>Select “Downloads” under “Browse” and then “Java” under “Downloads”.</li>
+<li>Download and install “Java for Mac OS X z.z Update z Developer Package” or "Developer Preview" package suitable for your system.</li>
+<li>Open the “Project Structure” dialog through “File” menu or through tool bar.</li>
+<li>Click on “SDKs” under “Platform Settings” and look at the “Documentation Paths” tab.</li>
+<li>Add the following paths (the path may be different based on which JDK you’re using):
+
+<ul>
+<li>/Library/Java/JavaVirtualMachines/<strong>java.version</strong>/Contents/Home/docs.jar!/docs/api</li>
+<li>/Library/Java/JavaVirtualMachines/<strong>java.version</strong>/Contents/Home/appledocs.jar!/appledoc/api</li>
+</ul>
+</li>
+<li>Add the following path under the Sourcepath tab:
+
+<ul>
+<li>/Library/Java/JavaVirtualMachines/<strong>java.version</strong>/Contents/Home/src.jar!/src</li>
+</ul>
+</li>
+</ol>
+
+
+<p>After you done the above steps you should be able to go to JDK sources and your auto completion should show documentation for classes and methods.</p>
+
 	</div>
 </div>
+
 </div>
 
 <div id="footer">

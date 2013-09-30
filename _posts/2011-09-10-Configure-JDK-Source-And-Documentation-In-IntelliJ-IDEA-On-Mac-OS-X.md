@@ -2,8 +2,8 @@
 layout: post
 title: Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X
 author: Milinda Pathirage
-time: 10th September 2011 
-comments: true
+time: 2011-09-10
+excerpt: This post describes steps necessary to download and configure JDK source files and documetation in IntelliJ IDEA on Mac OS X.
 ---
 
 When you install IntelliJ IDEA on Mac OS X, it doesn't automatically pick the JDK source and documentation as it do in Linux. As I got to know this is because default Java installation in Mac OS X doesn't have those. You need to first download "*Java for Mac OS X <version> Developer Package*" from [Apple Developer Downloads](http://connect.apple.com/). You have to follow below steps to configure JDK source and documentation in IntelliJ IDEA.

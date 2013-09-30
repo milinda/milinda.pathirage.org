@@ -9,7 +9,7 @@
     <meta name="author" content="Milinda Pathirage">
     <link rel="shortcut icon" href="/images/favicon.png">
 
-    <title>Technology and Life - Your New Jekyll Site</title>
+    <title>Technology and Life - Creating SVN Mirror For Git Repository</title>
 
     <!-- Google Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet'
@@ -63,86 +63,61 @@
 </div>
 
 <div class="container">
-    <div class="row posts">
-	<div class="col-lg-6">
-			
-				
-				
-				<div class="article">
-					<p class="date">29 Sep 2013</p>
-					<h3><a href="/hadoop/yarn/2013/09/29/how-to-setup-multi-node-hadoop-20xyarn-cluster.html">How To Setup Multi Node Hadoop 2.0.x(YARN) Cluster</a></h3>
-					<p>There are lots of online articles on installing Hadoop. But not many on Hadoop YARN. But the articles I found didn't work for Hadoop 2.0.6. I had to read the Hadoop code and figure out the issues. This post descibres proper and easy way to install Hadoop 2.0.6-alpha(YARN) on a 2-node cluster.</p>
-				</div>
-				
-	    
-				
-				
-	    
-				
-				
-				<div class="article">
-					<p class="date">20 Jul 2012</p>
-					<h3><a href="/2012/07/20/Creating-Subversion-Mirror-For-Git-Repository.html">Creating SVN Mirror For Git Repository</a></h3>
-					<p>Most of the times we mirror our SVN repositories using Git. But I wanted to mirror Git repository into a SVN repository. This post describes the process of mirroring a Git repo to SVN.</p>
-				</div>
-				
-	    
-				
-				
-	    
-				
-				
-				<div class="article">
-					<p class="date">13 Mar 2012</p>
-					<h3><a href="/python/scrapy/2012/03/13/introduction-to-scrapy.html">Recursively Scraping A Blog With Scrapy</a></h3>
-					<p>This is a sample post explaining capabilities of Jekyll framework for beginners. You need to put all your posts under _posts directory.</p>
-				</div>
-				
-	    
-				
-				
-	    
+    <div class="post">
+	<div class="header">
+  	<h1>Creating SVN Mirror For Git Repository</h1>
+  	<p>20 Jul 2012 by Milinda Pathirage</p>
 	</div>
-	<div class="col-lg-6">
-		
-			
-			
-    
-			
-			
-			<div class="article">
-				<p class="date">27 Aug 2012</p>
-				<h3><a href="/2012/08/27/Handling-File-Uploads-In-Clojure-Web-Apps.html">Handling File Uploads in Clojure Web Apps</a></h3>
-				<p>I talked about Clojure web development in my previous post. This is a extension to it which describes adding file upload support to Clojure web apps.</p>
-			</div>
-			
-    
-			
-			
-    
-			
-			
-			<div class="article">
-				<p class="date">06 Jun 2012</p>
-				<h3><a href="/2012/06/06/getting_started_with_clojure_web_application_development.html">Web Application Development in Clojure</a></h3>
-				<p>Getting started with Clojure web development, including popular Clojure web frameworks and tutorials.</p>
-			</div>
-			
-    
-			
-			
-    
-			
-			
-			<div class="article">
-				<p class="date">10 Sep 2011</p>
-				<h3><a href="/2011/09/10/Configure-JDK-Source-And-Documentation-In-IntelliJ-IDEA-On-Mac-OS-X.html">Configure JDK Source and Documentation in IntelliJ IDEA on Mac OS X</a></h3>
-				<p>This post describes steps necessary to download and configure JDK source files and documetation in IntelliJ IDEA on Mac OS X.</p>
-			</div>
-			
-    
+	<div class="content">
+		<p>Today I needed to mirror one of my Github repositories into a internal SVN
+repository. I googled and found <a href="http://stackoverflow.com/questions/661018/pushing-an-existing-git-repository-to-svn">several</a> <a href="http://stackoverflow.com/questions/1269566/unable-to-determine-upstream-svn-information-from-head-history">Stackoverflow</a> threads and
+<a href="http://code.google.com/p/support/wiki/ImportingFromGit">articles</a> which explain different ways of doing this. But none of the
+approaches in those worked for me. Finally I found <a href="http://www.codeography.com/2010/03/17/howto-mirror-git-to-subversion.html">this post</a> from
+Codeography which worked like a charm and which was really simple.
+Following is the methodology described in that post. I am sure that this
+will work for most of us when compared with the complex methods
+discussed in the different places of internet.</p>
+
+<p>I mirrored <a href="https://github.com/milinda/CloudPipe">CloudPipe</a> repository in Github
+to our internal SVN <a href="svn+ssh://bitternut.cs.indiana.edu/home/dquob/svn-repo/slosh/cloudpipe/trunk">repo</a>.</p>
+
+<p>First step is to edit the <strong>.git/config</strong> file in your local Git
+repository. You need to add following to <em>config</em> file.</p>
+
+<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">[</span><span class="nv">svn-remote &quot;svn&quot;</span><span class="p-Indicator">]</span>                                                              
+    <span class="l-Scalar-Plain">url = svn+ssh://mpathira@bitternut.cs.indiana.edu/home/dquob/svn-repo/slosh/cloudpipe/trunk</span>
+    <span class="l-Scalar-Plain">fetch = :refs/remotes/git-svn</span>
+</code></pre></div>
+
+
+<p>In above <strong>url</strong> should point to your SVN repository. Then you need to
+merge the <strong>master</strong> in to new branch using following commands.</p>
+
+<div class="highlight"><pre><code class="bash">git svn fetch svn
+git checkout -b svn git-svn
+git merge master
+git svn dcommit
+</code></pre></div>
+
+
+<p>Then rebase the branch to the <strong>master</strong>, and you can <strong>dcommit</strong> from the
+<strong>master</strong> to <strong>svn</strong>.</p>
+
+<div class="highlight"><pre><code class="bash">git checkout master
+git rebase svn
+git branch -d svn
+git svn dcommit
+</code></pre></div>
+
+
+<p>After this you can commit changes to <strong>svn</strong>, every time you do a commit to git.
+The <a href="http://www.codeography.com/2010/03/17/howto-mirror-git-to-subversion.html">post</a> I mentioned above contains extra information on how to use cron
+job to sync the repositories periodically. But I didn't try those, so
+you may need to try and see whether they work for you.</p>
+
 	</div>
 </div>
+
 </div>
 
 <div id="footer">

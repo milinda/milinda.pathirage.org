@@ -1,24 +1,30 @@
 ---
-layout: layout
-title: Hey, I'm Milinda
-home: true
+layout: default
+title: Your New Jekyll Site
 ---
-  <h1>Recent Posts</h1>
-  {% for post in site.posts limit:8 %}
-  <a class="post" href="{{ post.url }}/" style="font-size: 1.3em;">{{ post.title }}</a>
-  <time>{{ post.date | date: "%B %d"}}, {{ post.date | date: "%Y" }}</time>
-  {% endfor %}
-
-  <h1>Publications</h1>
-  <span style="display:block;"><a class="post" style="font-size: 1.3em;" href="http://academic.research.microsoft.com/Publication/51123126/a-multi-tenant-architecture-for-business-process-executions" target="_blank">
-    ICWS 2011 - A Multi-tenant Architecture for Business Process Executions
-</a>(<a href="http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf">PDF</a>)</span>
-
-<span style="margin-top:10px;display:block;"><a class="post" style="font-size: 1.3em;" href="http://www.igi-global.com/article/scalable-multi-tenant-architecture-business/70388" target="_blank">
-    IJWSR Vol. 9 Issue 2 - A Scalable Multi-Tenant Architecture for Business Process Executions
-</a></span>
-
-<span style="margin-top:10px;display:block;"><a class="post" style="font-size: 1.3em;" href="http://dl.acm.org/citation.cfm?id=2287040" target="_blank">
-    ScienceCloud 2012 - Middleware alternatives for storm surge predictions in Windows Azure
-</a></span>
-
+<div class="row posts">
+	<div class="col-lg-6">
+			{% for post in site.posts %}
+				{% capture modulo %}{{ forloop.index | modulo: 2 }}{% endcapture %}
+				{% unless modulo contains '0' %}
+				<div class="article">
+					<p class="date">{{ post.date | date_to_string }}</p>
+					<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+					<p>{{ post.excerpt }}</p>
+				</div>
+				{% endunless %}
+	    {% endfor %}
+	</div>
+	<div class="col-lg-6">
+		{% for post in site.posts %}
+			{% capture modulo %}{{ forloop.index | modulo: 2 }}{% endcapture %}
+			{% unless modulo contains '1' %}
+			<div class="article">
+				<p class="date">{{ post.date | date_to_string }}</p>
+				<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+				<p>{{ post.excerpt }}</p>
+			</div>
+			{% endunless %}
+    {% endfor %}
+	</div>
+</div>

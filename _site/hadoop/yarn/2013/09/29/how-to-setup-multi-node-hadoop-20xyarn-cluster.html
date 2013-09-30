@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Distributed Systems, Parallel Programming, Programming Languages and Life">
+    <meta name="author" content="Milinda Pathirage">
+    <link rel="shortcut icon" href="/images/favicon.png">
+
+    <title>Technology and Life - How To Setup Multi Node Hadoop 2.0.x(YARN) Cluster</title>
+
+    <!-- Google Webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic'
+          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet'
+          type='text/css'>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		  <script src="/js/html5shiv.js"></script>
+		  <script src="/js/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TECHNOLOGY & LIFE</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right all-caps">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <!--li><a href="#">Photos</a></li>
+                <li><a href="#">Archive</a></li-->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="post">
+	<div class="header">
+  	<h1>How To Setup Multi Node Hadoop 2.0.x(YARN) Cluster</h1>
+  	<p>29 Sep 2013 by Milinda Pathirage</p>
+	</div>
+	<div class="content">
+		<p>This post describes neccessary steps required to setup 2-node <a href="http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html">Hadoop YARN</a> cluster using Hadoop <a href="http://hadoop.apache.org/docs/r2.0.6-alpha/">2.0.6-alpha</a> release. This post is based on [<a href="#references">1</a>] and [<a href="#references">2</a>] and can be considered as a combination of both posts with extra steps necessary to setup Hadoop 2.0.6-alpha. Steps I discussed here should also work for Hadoop <a href="http://hadoop.apache.org/docs/r2.1.0-beta/">2.1.0-beta</a>.</p>
+
+<h2>1. User accounts, /etc/hosts file modifications and password less SSH</h2>
+
+<p>You can follow the steps described in [<a href="#references">1</a>] under section "<strong>User creation and other configurations steps</strong>" to setup necessary user accounts and password less SSH. One thing to make sure that password less ssh for locahost, in addition to slaves. [<a href="#references">2</a>] doesn't mention about password less SSH for <strong>localhost</strong>, but it is important. Otherwise startup scripts will ask you to type the password during <em>data node</em> and <em>node manager</em> startup.</p>
+
+<h2>2. Configuring Hadoop</h2>
+
+<p>You can follow the steps 4, 5, 6, 7, and 8 described in [<a href="#references">2</a>] to configure Hadoop with some small modifications noted below.</p>
+
+<ul>
+<li>During step 5 in [<a href="#references">2</a>], you need to add <strong>JAVA_HOME</strong> environment variable to <em>hadoop-env.sh</em> too.</li>
+<li>One of the most important configuration step is configuring <em>yarn.nodemanager.address</em> and <em>yarn.nodemanager.localizer.address</em> in <em>yarn-site.xml</em> during step 7 discussed in [<a href="#references">2</a>]. We need this configuration change only in master node due to the fact that both resource manager and node manager will run on master node and if we don't have a node manager address and localizer address specific to node manager, node manager will try to bind to same ports which uses by resource manager.</li>
+</ul>
+
+
+<p>So with above mentioned change yarn-site.xml will look like following after necessary changes.</p>
+
+<div class="highlight"><pre><code class="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>mapreduce.shuffle<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.aux-services.mapreduce.shuffle.class<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>org.apache.hadoop.mapred.ShuffleHandler<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.resource-tracker.address<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>master:8025<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.scheduler.address<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>master:8030<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.resourcemanager.address<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>master:8040<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.address<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>master:8050<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>yarn.nodemanager.localizer.address<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>master:8060<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div>
+
+
+<h2>3. Running Hadoop YARN and Checking Installation</h2>
+
+<p>You can follow steps 9, 10, 11 and 12 in [<a href="#references">2</a>] to start and test the installation. You can find necessary information about web interface URLs and how to stop Hadoop YARN cluster in last part of [<a href="#references">2</a>].</p>
+
+<div class="references" id="references"> 
+     <h2>References</h2>
+<p>[<a href="http://www.javacodegeeks.com/2013/06/setting-up-apache-hadoop-multi-node-cluster.html" target="_blank">1</a>]. Piyas De, <strong><em>Setting up Apache Hadoop Multi – Node Cluster</em></strong></p>
+<p>[<a href="http://raseshmori.wordpress.com/2012/10/14/install-hadoop-nextgen-yarn-multi-node-cluster/" target="_blank">2</a>]. Rasesh Mori,  <strong><em>Steps to install Hadoop 2.x release (Yarn or Next-Gen) on multi-node cluster</em> </strong></p>
+</div>
+
+
+
+
+	</div>
+</div>
+
+</div>
+
+<div id="footer">
+    <div class="container">
+        <div id="about" class="row" style="padding-top:20px;">
+            <div class="col-lg-6">
+                <p>
+                    Milinda Pathirage is a Computer Science PhD student at 
+					<a href="http://www.iub.edu/" target="_blank">Indiana University,
+                    Bloomington</a>. I am interested in distributed systems, parallel programing
+                    and many core architectures. <a href="#">More..</a>
+                </p>
+
+                <p style="text-transform: uppercase;">
+                    <strong>Find me elsewhere</strong>
+                </p>
+
+                <div class="social-profiles">
+                    <a href="https://twitter.com/milindalakmal">
+                        <img src="/images/twitter-32.png">
+                    </a>
+                    <a href="https://twitter.com/milindalakmal">
+                        <img src="/images/facebook-32.png">
+                    </a>
+                    <a href="https://twitter.com/milindalakmal">
+                        <img src="/images/flickr-32.png">
+                    </a>
+                    <a href="https://twitter.com/milindalakmal">
+                        <img src="/images/linkedin-32.png">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="/images/family.png">
+            </div>
+        </div>
+    </div>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

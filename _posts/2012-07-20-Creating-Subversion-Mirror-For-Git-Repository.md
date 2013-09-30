@@ -2,7 +2,8 @@
 layout: post
 title: Creating SVN Mirror For Git Repository
 author: Milinda Pathirage
-time: 20th July 2012
+time: 2012-07-20
+excerpt: Most of the times we mirror our SVN repositories using Git. But I wanted to mirror Git repository into a SVN repository. This post describes the process of mirroring a Git repo to SVN.
 ---
 
 Today I needed to mirror one of my Github repositories into a internal SVN

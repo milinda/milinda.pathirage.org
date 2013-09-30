@@ -3,7 +3,7 @@ layout: post
 title: Web Application Development in Clojure
 author: Milinda Pathirage
 date: 2012-06-06 18:54:11
-comments: true
+excerpt: Getting started with Clojure web development, including popular Clojure web frameworks and tutorials.
 ---
 
 I did some coding in [Scheme](http://en.wikipedia.org/wiki/Scheme_\(programming_language\)) and [Ruby](http://www.ruby-lang.org/en/) last couple of months and felt that writing Java code is not fun anymore. But Java as a platform is really good for
