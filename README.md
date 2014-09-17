@@ -1,61 +1,18 @@
-# Solo ([Live Demo](http://solo.chibi.io))
+I am Milinda Pathirage, a computer science PhD student interested in distributed stream processing systems and programming abstractions for distributed systems and stream processing. I write a blog [here](http://milinda.svbtle.com) about interesting things related to research I am doing,  programming and technology in general. I live in [Bloomington, Indiana](http://en.wikipedia.org/wiki/Bloomington,_Indiana) with my daughter and wife. You can find my resume [here](/milinda-cv.pdf).
 
-[Solo](http://solo.chibi.io) is a Jekyll theme that supports **single-page websites** only, but supports them well. Yes, it's responsive.
+## Projects
 
-<iframe src="http://ghbtns.com/github-btn.html?user=chibicode&amp;repo=solo&amp;type=watch&amp;count=true&amp;size=large"
-  allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe><br/>
+- [HathiTrust Research Center](http://www.hathitrust.org/htrc) (Research Assistant)
+- [WSO2 Business Process Server](http://wso2.com/products/business-process-server/) (Lead Developer and Product Manager *from 2009 to 2011*)
+- [Apache ODE](http://ode.apache.org) (Developer & PMC Member)
+- [Apache Axis2/C](http://axis.apache.org/axis2/c/core/) (Developer & PMC Member)
+- [Apache Rampart/C](http://axis.apache.org/axis2/c/rampart/) (Developer & PMC Member)
 
-Looking for a more standard Jekyll theme? Try out [Shiori](http://github.com/ellekasai/shiori) theme, which has Bootstrap integration.
 
-## Solo is useful if...
+## Publications
 
-* You want to create an "about me" page from a single markdown file and host it under a custom domain name.
-* You want to create a single-page website that's mostly text, like [Know Your Company](https://knowyourcompany.com/).
-* You want to share a single markdown file and tried GitHub Gist ([example](https://gist.github.com/dypsilon/5819504)), but would like something nicer-looking.
-* You want something like GitHub's [automatic page generator](http://pages.github.com/) for a non-code repository.
-
-This page itself is built with Solo. It's generated from [this markdown file](https://github.com/chibicode/solo/blob/gh-pages/_includes/index.md).
-
-## Usage
-
-First, [install Jekyll](http://jekyllrb.com/docs/installation/). Then download Solo from its [GitHub Repository](https://github.com/chibicode/solo). Start Jekyll and you should see this page up and running.
-
-**The main file you'll be editing is `_includes/index.md`**. This becomes the content for the main `index.html`.
-
-### Other Files
-
-* Edit `_config.yml` to change the site title.
-* Edit `_includes/head.html` to add custom code to `<head>`.
-* Edit `_includes/scripts.html` to add custom code before `</body>`.
-* Edit `CNAME` to host on a custom domain.
-* Edit `README.md` before pushing your code.
-
-### Don't use `<h1>` tags
-
-Wthin `index.md`, do not use `<h1>` tags - `<h1>` is reserved for the site title.
-
-### Supported Tags
-
-Solo supports lists, `<hr>`s, `<table>`s,
-
-> blockquotes, and...
-
-~~~html
-<pre>code blocks with syntax highlighting.</pre>
-~~~
-
-### Keep Solo up to date
-
-Instead of downloading, you can [fork Solo](https://github.com/chibicode/solo/fork) and use the "upstream" strategy described on [this page](https://help.github.com/articles/fork-a-repo) to keep Solo up to date.
-
-## Author
-
-Shu Uesugi ([Twitter](http://twitter.com/chibicode)/[GitHub](http://github.com/chibicode)/[G+](https://plus.google.com/110325199858284431541?rel=author)).
-
-![Shu Uesugi](http://www.gravatar.com/avatar/b868d84bbe2ed30ec45c9253e1c1cefe.jpg?s=200)
-
-### License
-
-[MIT License](http://chibicode.mit-license.org/)
-
-<div class="github-fork-ribbon-wrapper right fixed" style="width: 150px;height: 150px;position: fixed;overflow: hidden;top: 0;z-index: 9999;pointer-events: none;right: 0;"><div class="github-fork-ribbon" style="position: absolute;padding: 2px 0;background-color: #333;background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));-webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);-moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);z-index: 9999;pointer-events: auto;top: 42px;right: -43px;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);"><a href="https://github.com/chibicode/solo" style="font: 700 13px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;color: #fff;text-decoration: none;text-shadow: 0 -1px rgba(0, 0, 0, 0.5);text-align: center;width: 200px;line-height: 20px;display: inline-block;padding: 2px 0;border-width: 1px 0;border-style: dotted;border-color: rgba(255, 255, 255, 0.7);">Fork me on GitHub</a></div></div>
+- Eric Holk, Milinda Pathirage, Arun Chauhan, Andrew Lumsdaine, Nicholas D. Matsakis. **“[GPU Programming in Rust: Implementing High-level Abstractions in a Systems-level Language](http://www.cs.indiana.edu/~eholk/papers/hips2013.pdf),”** in *18th International Workshop on High-level Parallel Programming Models and Supporting Environments (HIPS)*. 2013.
+- Milinda Pathirage, Srinath Perera, Indika Kumara, Denis Weerasiri, Sanjiva Weerawarana. **“[A Scalable Multi-Tenant Architecture for Business Process Executions](http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf),”** in *International Journal of Web Services Research (IJWSR)*. April 2012.
+- Milinda Pathirage, Srinath Perera, Indika Kumara, Sanjiva Weerawarana. **“[A Multi-tenant Architecture for Business Process Executions](http://people.apache.org/~hemapani/research/papers/ode-multi-tenancy.pdf),”** in *Proceedings of the 2011 IEEE International Conference on Web Services*. 2011.
+- Kowalczyk S. T., Y. Sun, Z. Peng, B. Plale, A. Todd, L. Auvil, C. Willis, J. Zeng, M. Pathirage, S. Liyanage. **“Big Data at Scale for Digital Humanities: An Architecture for the HathiTrust Research Center,”** in *Big Data Management, Technologies, and Applications, Wen-Chen Hu and Naima Kaabouch (eds)*. 2013
+- Chandrasekar, K., M. Pathirage, S. Wijeratne, C. Mattocks, and B. Plale. **“Middleware alternatives for storm surge predictions in Windows Azure,”** in *3rd Workshop on Scientific Cloud Computing (ScienceCloud ’12) at HPDC ’12*. 2012
