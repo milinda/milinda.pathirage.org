@@ -1,29 +1,36 @@
 @import url(//fonts.googleapis.com/css?family=Montserrat:700);
 @import url(//fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,200,700,600,500);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond);
 
 html {
-  font: 16px/1.5 Inconsolata, sans-serif;
+  /*font: 16px/1.5 'Lato', sans-serif;*/
+  font: 16px/1.6 'Capita-Light', sans-serif;
+  font-weight: 300;
 }
 
-@media (min-width: 30rem) {
+@media (min-width: 35rem) {
   html {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
 body {
   margin: 2rem 0 1rem;
-  color: #333;
+  /*color: #333;*/
+  color: rgb(77,77,77);
 }
 
-@media (min-width: 30rem) {
+@media (min-width: 35rem) {
   body {
     margin-top: 5rem;
   }
 }
 
 a {
-  color: #0074d9; /* From http://clrs.cc */
+  /*color: #0074d9; /* From http://clrs.cc */
+  color: #E3493B;
   text-decoration: none;
 }
 
@@ -39,15 +46,26 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
 }
 
-h1 {
+.main-title {
   font-size: 2.5rem;
+}
+
+@media (min-width: 35rem) {
+  .main-title {
+    font-size: 3rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
-@media (min-width: 30rem) {
+@media (min-width: 35rem) {
   h1 {
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -75,9 +93,10 @@ h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-p, ul, ol, dl, table, pre, blockquote {
+p, ul, ol, dl, table, blockquote {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  /*font-family: 'EB Garamond', serif;*/
 }
 
 ul, ol {
@@ -128,26 +147,48 @@ td, th {
   border: 1px solid #ccc;
 }
 
-pre, code {
+/*pre, code {
   font-family: inherit;
-  background-color: #eee;
-}
+  background-color: rgb(248, 248, 248);
+}*/
 
-pre {
+/*pre {
   padding: .5rem 1rem;
   font-size: 0.8rem;
-}
+}*/
 
-code {
+/*code {
   padding: .1rem .25rem;
-}
+}*/
 
-pre > code {
+/*pre > code {
   padding: 0;
-}
+}*/
 
 .container {
-  max-width: 30rem;
+/*  max-width: 30rem;*/
   margin: 0 auto;
   padding: 0 1rem;
 }
+
+p,ul,ol,dl,pre,table,blockquote{
+  max-width: 35rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+h1,h2,h3,h4,h5{
+  max-width: 35rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Moving lists closer to previous element. */
+p + ul, p + ol{
+  margin-top: -1.5rem;
+}
+
+/*.highlight > pre {
+  border: 1px solid rgba(144, 144, 144, .3);
+}*/

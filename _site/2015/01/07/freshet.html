@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freshet - CQL based Clojure DSL for Streaming Queries</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,400italic,700' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/syntax.css">
+  <link rel="stylesheet" href="/css/solo.css">
+  <link rel="stylesheet" href="/css/MyFontsWebfontsKit.css">
+  <script type="text/javascript">
+   hljs.initHighlightingOnLoad();
+  </script>
+
+
+</head>
+<body>
+  <div class="container">
+    <!--a href="/" style="margin-left: 320px; margin-right: 320px; margin-top: -100px;"><i class="fa fa-home fa-lg" style="padding-bottom: 30px;"></i></a-->
+    <p>
+    <a href="/" style="color: #9b939a">Go Back</a>
+    </p>
+    <!--h1 class="main-title"><a href="/">Milinda.</a></h1-->
+    <h1><a href="/2015/01/07/freshet.html">Freshet - CQL based Clojure DSL for Streaming Queries</a></h1>
+    <p style="margin-top:1rem; color: rgb(133, 153, 0);">7 January 2015</p>
+    <p><strong>Originally published in <a href="http://milinda.svbtle.com/freshet-cql-based-clojure-dsl-for-streaming-queries">milinda.svbtle.com</a>.</strong></p>
+
+<p>Interest on continuous queries on streams of data has increased over last couple of years due to the need of deriving actionable information as soon as possible to be competitive in the fast moving world. Existing Big Data technologies designed to handle batch processing couldn’t handle today’s near real-time requirements and distributed stream processing systems like Yahoo’s <a href="http://incubator.apache.org/s4/">S4</a>, Twitter’s <a href="https://storm.apache.org/">Storm</a>, <a href="https://spark.apache.org/streaming/">Spark Streaming</a> and LinkedIn’s <a href="http://samza.incubator.apache.org/">Samza</a> were introduced into the fast growing Big Data eco-system to tackle real-time requirements. These systems are robust, fault tolerant and scalable to handle massive volumes of streaming data, but lacks first class support for SQL like querying capabilities. All of these frameworks provide <a href="http://samza.incubator.apache.org/learn/documentation/0.8/api/overview.html">high-level</a> <a href="https://storm.apache.org/documentation/Trident-tutorial.html">programming</a> <a href="https://spark.apache.org/docs/latest/streaming-programming-guide.html">API</a>s in JVM compatible languages.</p>
+
+<p>In the golden era of stream processing research, numerous amount of work has done on query engines and languages for stream processing. But we are yet to adapt these work on streaming query languages to above mentioned distributed stream processing systems widely used today.</p>
+
+<p>Also with the transition from batch to real-time Big Data, different architectures were proposed to handle the <a href="http://lambda-architecture.net/">integration of batch and real-time systems(Lambda Archiecture)</a> as well as to <a href="http://www.kappa-architecture.com/">revolutionized the way we built today’s systems(Kappa Architecture)</a>. Even though there aren’t any standards (like SQL and Relational Algebra for DBs) on implementing these architectures, <a href="https://github.com/twitter/summingbird">Summingbird</a> implements <a href="http://lambda-architecture.net/">Lambda Architecture</a> based on <a href="http://en.wikipedia.org/wiki/Monoid">monoids</a>. Also there are <a href="http://spark-summit.org/2014/talk/applying-the-lambda-architecture-with-spark">other ways</a> to implement <em>Lambda Architecture</em> such as Spark’s Scala API for streaming and batch processing. Even though it is possible to implement <a href="http://www.kappa-architecture.com/">Kappa Architecture</a> manually using above mentioned frameworks, there aren’t any high-level frameworks like Summingbird for this purpose. <a href="https://github.com/milinda/Freshet">Freshet</a> tries to fill this gap by adapting continuous query semantics and execution planning methods discussed by Arasu et. al. in their paper <a href="https://cs.uwaterloo.ca/~david/cs848/stream-cql.pdf">The CQL Continuous Query Language: Semantic Foundations and Query Execution</a> to implement <em>Kappa Architecture</em> on top of Apache Samza.</p>
+
+<p>Before going into details about <a href="https://github.com/milinda/Freshet">Freshet</a> , its important to discuss <em>Kappa Architecture</em> and <em>CQL</em>. These are the fundamental ideas and technologies which Freshet is based on.</p>
+
+<h2 id="kappa-architecture">Kappa Architecture</h2>
+
+<p><em>Kappa Architecture</em> which has the notion of – Everything Is A Stream – is <a href="http://radar.oreilly.com/2014/07/questioning-the-lambda-architecture.html">proposed</a> as an alternative to Lambda Architecture. In above, author  argues that, stream processing is a generalization of data-flow DAGs with support for check-pointing intermediate results and continuous output to the end user. And he emphasizes that we can actually use current distributed stream processing framework like Aapache Samza combine with message queue like <a href="http://kafka.apache.org/">Kafka</a> which retains ordered data to implement use cases handled by Lambda Architecture and handle the reprocessing by replaying the stream through new versions of stream processing code or completely new algorithm.</p>
+
+<h2 id="cql---continuous-query-language">CQL - Continuous Query Language</h2>
+
+<p><a href="https://cs.uwaterloo.ca/~david/cs848/stream-cql.pdf">CQL</a> - aka Continuous Query Language - is a SQL- based declarative language for expressing queries over data streams and time varying relations. CQL’s abstract semantics are based on two data types - streams and relations - and three types of operations - stream-to-relations, relation-to- relation and relation-to-stream. CQL take advantage of well understood relational semantics and keep the language simpler and queries compact by introducing minimal changes to SQL.</p>
+
+<ul>
+  <li>Window specification derived from SQL-99 to trans- form streams to relations</li>
+  <li>Three new operators to transform time varying relations into streams.</li>
+</ul>
+
+<h3 id="cql-sample---filtering-a-stream">CQL Sample - <em>Filtering A Stream</em></h3>
+
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">Rstream</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="n">PosSpeedStr</span> <span class="p">[</span><span class="n">Now</span><span class="p">]</span>
+  <span class="k">WHERE</span> <span class="n">speed</span> <span class="o">&gt;</span> <span class="mi">65</span></code></pre></div>
+
+<p>CQL uses SQL for <em>relation-to-relation</em> transformation while relations in CQL is different from relations in SQL due to the fact that the CQL relations vary with time. Concepts like <em>insert/delete</em> streams which used in CQL prototype to encode both streams and relations in a unified way and synopses which plus-minus streams are based on are still useful in contexts like Freshet.</p>
+
+<p>Another important thing is the fact that we can use traditional database relations in CQL queries which enables us to do things like stream-relation joins common in real world applications.</p>
+
+<h2 id="freshet">Freshet</h2>
+
+<p>Let’s come back to <a href="https://github.com/milinda/Freshet">Freshet</a> . <a href="https://github.com/milinda/Freshet">Freshet</a>  is first step towards a complete implementation of Kappa Architecture based on <a href="https://cs.uwaterloo.ca/~david/cs848/stream-cql.pdf">CQL</a> to support continuous queries. Freshet implements a subset(select, windowing, aggregates) of CQL on top of Apache Samza. Freshet implements RStream and IStream relation-to-stream operators, tuple and time based sliding windows to convert streams to relations and basic relation to relation operators for implementing business logic. Following CQL, Freshet uses <em>insert/delete</em> stream to model instantaneous relations.</p>
+
+<p><a href="http://img.svbtle.com/bzsmth0xzik1jq.jpg"><img src="https://d23f6h5jpj26xu.cloudfront.net/bzsmth0xzik1jq_small.jpg" alt="freshet-arch.jpg" /></a></p>
+
+<p>As shown in above figure, Freshet is build out of five main logical components.</p>
+
+<ul>
+  <li><strong>Query DSL</strong>: Implemented as a Clojure DSL and used to express CQL queries against streams. Queries expressed in Freshet DSL will get compiled in to streaming relation algebra model and then will get converted into execution plan which consists of set of operators written as Samza stream tasks connected together as a DAG via Kafka queues.</li>
+  <li><strong>Query Compiler</strong>: Compile SQL model generated from DSL to intermediate representation which can be converted in to execution plan.</li>
+  <li><strong>Execution Planner</strong>: Generate execution plans (Samza jobs connected via input, intermediate and output streams to form a DAG) based on intermediate representation and current status of the Freshet cluster.</li>
+  <li><strong>Scheduler</strong>: Does the actual scheduling of Samza Jobs.</li>
+  <li><strong>Query Operators</strong>: Samza stream tasks. Implement
+CQL operators like window, select, aggregate, and view generation operators like rstream, istream. Theses operators, connected via intermediate streams perform stream processing according to the query express in Freshet DSL.</li>
+</ul>
+
+<h2 id="freshet-dsl">Freshet DSL</h2>
+
+<p>Freshet Clojure DSL is inspired by <a href="http://sqlkorma.com/">Korma</a> Clojure DSL for SQL. Freshet DSL follows the same style as Korma DSL. There are two main constructs in current Freshet DSL. <strong>defstream</strong> and <strong>select</strong> queries. These are two forms I am planning to support in initial version. Other constructs will be added later.</p>
+
+<h3 id="defstream">defstream</h3>
+
+<p>Used to define a new stream. Streams defined using <em>defstream</em> represent Kafka topics in current implementation. New modifiers will be added to <em>defstream</em> form in future to support different input sources. Most important modifier for <em>defstream</em> form is <em>stream-fields</em> modifier which modify the stream definition with field name/type mapping. Clojure <em>keywords</em> are used to specify field names and these keywords will get converted to string internally. There are pre-defined keywords for specifying types like :string, :integer. Below is how we define wikipedia activity stream to use in stream queries.</p>
+
+<div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nf">defstream</span> <span class="nv">wikipedia-activity</span>
+  <span class="p">(</span><span class="nf">stream-fields</span> <span class="p">[</span><span class="ss">:title</span> <span class="ss">:string</span>
+    <span class="ss">:user</span> <span class="ss">:string</span>
+    <span class="ss">:diff-bytes</span> <span class="ss">:integer</span>
+    <span class="ss">:diff-url</span> <span class="ss">:string</span>
+    <span class="ss">:unparsed-flags</span> <span class="ss">:string</span>
+    <span class="ss">:is-new</span> <span class="ss">:boolean</span>
+    <span class="ss">:is-bot-edit</span> <span class="ss">:boolean</span>
+    <span class="ss">:timestamp</span> <span class="ss">:long</span><span class="p">])</span>
+    <span class="p">(</span><span class="nf">ts</span> <span class="ss">:timestamp</span><span class="p">))</span></code></pre></div>
+
+<h3 id="select">select</h3>
+
+<p>Used to define select queries over streams. Stream filtering using <em>where</em> and <em>aggregators</em> will be supported in the initial version and <em>joins</em> will be added next. Below is a sample select query which filters a stream.</p>
+
+<div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nb">select </span><span class="nv">wikipedia-activity</span>
+      <span class="p">(</span><span class="nf">modifiers</span> <span class="ss">:istream</span><span class="p">)</span>
+      <span class="p">(</span><span class="nf">window</span> <span class="p">(</span><span class="nf">unbounded</span><span class="p">))</span>
+      <span class="p">(</span><span class="nf">where</span> <span class="p">(</span><span class="nb">&gt; </span><span class="ss">:diff-bytes</span> <span class="mi">100</span><span class="p">)))</span></code></pre></div>
+
+<h2 id="query-execution">Query Execution</h2>
+
+<p>Freshet follows the same execution semantics as CQL and flow of execution is shown below.</p>
+
+<p><a href="http://img.svbtle.com/csdnd7s46rbvq.jpg"><img src="https://d23f6h5jpj26xu.cloudfront.net/csdnd7s46rbvq_small.jpg" alt="freshet-query-execution.jpg" /></a></p>
+
+<p>Window operator converts input stream into a <em>time varying relation</em> and the <em>time varying relation</em> is encoded as <em>insert/delete</em> stream to make it easy to implement relational operators as streaming operators. Relational part of the query will get converted to DAG of Samza operators and they will operate on <em>insert/delete</em> stream according to the query definition. Finally stream materializer will materialize the stream according to the output specified in the original query.</p>
+
+<h2 id="why-samza">Why Samza</h2>
+
+<p>Freshet chose Samza for its initial implementation mainly because</p>
+
+<ul>
+  <li>Samza is fully integrated with Kafka</li>
+  <li>Samza’s local storage is really useful for implementing synopses of CQL</li>
+</ul>
+
+<p>Samza’s property based job configuration is the only limitation when it comes to Freshet. Storm like topology builder could have come handy for Freshet like layers on top of Samza.</p>
+
+<h2 id="current-status-and-future-work">Current Status and Future Work</h2>
+
+<p>I am working on bridging Clojure DSL and the CQL operator layer (Samza stream tasks) currently and planning to do the initial release within couple of weeks. After the initial release I am planning to contribute to Apache Samza’s Stream Query implementation which is also based on CQL and implement the Freshet DSL on top of Apache Samza’s CQL implementation.</p>
+
+  </div>
+<p style="font-size: 0.7rem; text-align: center; margin-top: 50px; color: #ccc">Based on <a href="http://solo.chibi.io" target="_blank">Solo</a> by <a href="http://twitter.com/chibicode" target="_blank">Shu Uesugi</a></p>
+
+</body>
+</html>
